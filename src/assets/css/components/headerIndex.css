@@ -1,0 +1,37 @@
+header{
+  width:100%;
+  height: 100px;
+  background-color: var(--color-primario);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+h6{
+  color: var(--color-input);
+  margin: 15px;
+  margin-left: 5px;
+  cursor: pointer;
+  position: relative;
+  left: 20vw;
+  
+}
+
+img.header__icono{
+  position: relative;
+  left: 43vw;
+  margin-top: 10px;
+}
+
+img.logo{
+  width: 140px;
+
+  padding-left: 15px;
+  
+}
+
+
+
+

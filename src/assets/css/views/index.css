@@ -1,0 +1,22 @@
+
+body{
+    background-image: url(../../images/fondo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+
+}
+
+.index{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 87vh;
+    align-items: center;
+
+
+}
+
+.titulo{
+    color: var(--color-secundario);
+}

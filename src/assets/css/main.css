@@ -1,0 +1,12 @@
+@import './variables.css';
+
+@import './bases/reset.css';
+@import './bases/bases.css';
+
+@import './components/botonTema.css';
+@import './components/headerIndex.css';
+@import './components/btnGrande.css';
+@import './components/footerInicio.css';
+
+
+@import './views/index.css';

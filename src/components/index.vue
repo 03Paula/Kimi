@@ -1,3 +1,16 @@
+<script setup>
+    import HeaderIndex from './headerIndex.vue';
+    import FooterInicio from './FooterInicio.vue';
+    import BtnGrande from './BtnGrande.vue';
+</script>
+
 <template>
-    
+    <HeaderIndex />
+    <body class="index">
+        <h1 class="titulo" >Kimi</h1>
+        <h3>La mejor tienda para comprar mangas</h3>
+        <BtnGrande />
+
+    </body>
+    <FooterInicio />
 </template>
