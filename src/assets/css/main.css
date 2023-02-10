@@ -5,8 +5,10 @@
 
 @import './components/botonTema.css';
 @import './components/headerIndex.css';
-@import './components/btnGrande.css';
-@import './components/footerInicio.css';
+@import './components/botones.css';
+@import './components/footer.css';
 
 
 @import './views/index.css';
+@import './views/login.css';
+@import './views/registro.css'
