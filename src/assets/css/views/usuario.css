@@ -1,0 +1,33 @@
+.botones{
+    display: flex;
+    justify-content:space-evenly;
+}
+
+.avatar{
+    width: 300px;
+    height: 300px;
+    border-radius: 900px;
+    
+
+}
+
+.informacionUsuario{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.lineaVertical{
+    border-left: 3px solid var(--color-primario);
+}
+
+.datos{
+    margin-top: 50px;
+}
+
+.favoritos{
+    margin-left: 120px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}

@@ -1,19 +1,19 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
-import Index from './components/Index.vue'
+import Contacto from './components/Contacto.vue'
 
 export default {
   name: 'App', 
   components: {
-    Index
+    Contacto
   }
 }
 </script>
 
 <template>
-  <Index />
+  <Contacto />
 </template>
 
 <style>
-  @import './assets/css/main.css'
+  @import './assets/css/main.css';
 </style>

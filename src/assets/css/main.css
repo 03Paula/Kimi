@@ -11,4 +11,6 @@
 
 @import './views/index.css';
 @import './views/login.css';
-@import './views/registro.css'
+@import './views/registro.css';
+@import './views/usuario.css';
+@import './views/contacto.css';

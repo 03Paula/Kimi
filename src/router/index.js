@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Index from '../views/index.vue'
-import Login from '../components/login.vue'
-import Registro from '../components/registro.vue'
+import Login from '../components/Login.vue'
+import Registro from '../components/Registro.vue'
 import Listado from '../components/listado.vue'
-import Contacto from '../components/contacto.vue'
-import Producto from '../components/producto.vue'
+import Contacto from '../components/Contacto.vue'
+import Producto from '../components/Producto.vue'
+import Usuario from '../components/Usuario.vue'
 
 
 const router = createRouter({
@@ -39,6 +40,11 @@ const router = createRouter({
       path: '/producto',
       name: 'producto',
       component: Producto
+    },
+    {
+      path: '/usuario',
+      name: 'usuario',
+      component: Usuario
     },
   ]
 })
