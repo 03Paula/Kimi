@@ -16,7 +16,15 @@ header{
   cursor: pointer;
   position: relative;
   left: 20vw;
-  
+}
+
+.usuario{
+  color: var(--color-input);
+  margin: 15px;
+  margin-left: 5px;
+  cursor: pointer;
+  position: relative;
+  left: 35vw;
 }
 
 img.header__icono{
@@ -27,7 +35,6 @@ img.header__icono{
 
 img.logo{
   width: 140px;
-
   padding-left: 15px;
   
 }

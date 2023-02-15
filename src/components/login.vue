@@ -16,13 +16,17 @@
             <input type="password" name="contrasenia" id="contrasenia" />
             <input type="checkbox"/>
             <label class="recordar" >Recuerdame</label>
-            <p class="no__registrado" >No estoy registrado</p>
-            <BotonMediano>
-                <template #texto>Iniciar sesión</template>
-            </BotonMediano>
+            <RouterLink to="/registro" style="text-decoration: none; color: inherit;" ><p class="no__registrado" >No estoy registrado</p></RouterLink>
+            <RouterLink to="/listado" style="text-decoration: none; color: inherit;" >
+                <BotonMediano>
+                    <template #texto>Iniciar sesión</template>
+                </BotonMediano>
+            </RouterLink>
+            
         </div>
       <img src="../assets/images/flor2.png" class="flor-izquierda" />
       <img src="../assets/images/pngegg-2 1.png" class="muneco" />
     </body>
     <Footer />
+    <RouterView></RouterView>
 </template>

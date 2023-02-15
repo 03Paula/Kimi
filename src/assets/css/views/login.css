@@ -38,9 +38,15 @@ input{
     font-size: 0.8rem;
 }
 
+input[type=checkbox]{
+    width: 20px;
+    height: 20px;
+}
+
+
 label.recordar{
     position: relative;
-    bottom: 60px;
+    bottom: 55px;
     left: 25px;
     color: var(--color-texto);
 }
@@ -69,7 +75,7 @@ label.recordar{
 .flor-izquierda__registro{
     position: absolute;
     float: left;
-    top: 125vh;
+    top: 123vh;
     width: 25vw;
 }
 

@@ -1,12 +1,13 @@
 .formulario__registro{
     width: 40vw;
-    height: 980px;
+    height: 900px;
     background-color: #a7d7ec63;
     border-radius: 20px;
 
     display: block;
     margin: auto;
     margin-top: 10vh;
+    margin-bottom: 50px;
 }
 
 .registrado{

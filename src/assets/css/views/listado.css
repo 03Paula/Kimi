@@ -1,0 +1,9 @@
+.barraBusqueda{
+    width: 30vw;
+    height: 45px;
+    border-radius: 50px;
+    margin-left: 30%;
+    margin-right: 5px;
+    margin-top: 50px;
+    border: 1px solid var(--color-secundario);
+}

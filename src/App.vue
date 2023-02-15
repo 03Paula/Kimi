@@ -1,17 +1,17 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
-import Contacto from './components/Contacto.vue'
+import Login from './components/Login.vue'
 
 export default {
   name: 'App', 
   components: {
-    Contacto
+    Login
   }
 }
 </script>
 
 <template>
-  <Contacto />
+  <RouterView></RouterView>
 </template>
 
 <style>
