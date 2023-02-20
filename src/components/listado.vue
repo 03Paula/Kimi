@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
     import headerConUsuario from './HeaderConUsuario.vue';
     import BtnMedio from './BtnMedio.vue';
     import BtnPequeño from './BtnPequeño.vue';
@@ -45,7 +45,7 @@
 </template>
 
 
-<script lang="ts">
+<script>
 /**
  * @file Listado.vue - Componente para la página de listado.
  * @author Paula Flor
@@ -75,7 +75,6 @@
                 try{
                     const response = await fetch("https://kimiback.onrender.com/api/v1/mangas");
                     this.mangas = await response.json();
-                    return this.mangas
                 }catch (err){
                     console.log(err);
                 }
@@ -85,7 +84,6 @@
                 try{
                     const response = await fetch("https://kimiback.onrender.com/api/v1/figuras/");
                     this.figuras = await response.json();
-                    return this.figuras
                 }catch (err){
                     console.log(err);
                 }

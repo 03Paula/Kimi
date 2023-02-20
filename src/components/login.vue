@@ -26,7 +26,7 @@
             </form>
         </div>
       <img src="../assets/images/flor2.png" class="flor-izquierda" />
-      <img src="../assets/images/pngegg-2 1.png" class="muneco" />
+      <img src="../assets/images/muneco.png" class="muneco" />
     </body>
     <Footer />
     <RouterView></RouterView>

@@ -1,4 +1,4 @@
-<script setup lang="ts" >
+<script setup>
     import HeaderLogin from './HeaderLogin.vue';
     import BotonMediano from './BtnMedio.vue';
     import Footer from './Footer.vue'
@@ -38,14 +38,14 @@
             
         </div>
         <img src="../assets/images/flor2.png" class="flor-izquierda__registro" />
-        <img src="../assets/images/pngegg-3 1.png" class="muneco" />
+        <img src="../assets/images/otaku.png" class="muneco" />
         <Footer />
     </body>
    
 </template>
 
 
-<script lang="ts">
+<script>
 /**
  * @file Registro.vue
  * @author Paula Flor
