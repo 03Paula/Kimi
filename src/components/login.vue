@@ -33,6 +33,17 @@
 </template>
 
 <script>
+/**
+ * @file Login.vue
+ * @author Paula Flor
+ * 
+ * @vue-data [Object] usuario - Almacena la información del usuario.
+ * @vue-data {String} nombreUsu - Almacena el nombre de usuario.
+ * @vue-data {String} contraseña - Almacena la contraseña del usuario.
+ * @vue-data {Boolean} error - Muestra el mensaje de error si es true.
+ * 
+ * @vue-event compruebaUsuario - Hace una llamada a la api con el nombre de usuario y compara el nombre de usuario y la contraseña para ver si son correctos.
+ */
     export default {
         data() {
             return {

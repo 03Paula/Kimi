@@ -42,6 +42,26 @@
 </template>
 
 <script>
+/**
+ * @file Contacto.vue
+ * @author Paula Flor.
+ * 
+ * @vue-data {String} nombrecompleto - Almacena el nombre completo del usuario.
+ * @vue-data {String} email - Almacena el email del usuario.
+ * @vue-data {String} comentarios - Almacena los comentarios.
+ * @vue-data {String} errorNombre - Muestra el mensaje de error si es true.
+ * @vue-data {String} errorEmail - Muestra el mensaje de error si es true.
+ * @vue-data {String} errorComentario - Muestra el mensaje de error si es true.
+ * @vue-data {String} nombreReg - Expresión regular para validar el nombre completo.
+ * @vue-data {String} emailReg - Expresión regular para validar el email.
+ * @vue-data {String} comentariosReg - Expresión regular para validar el comenatrio.
+ * 
+ * @vue-event validarNombre - Valida el nombre con la expresión regular correspondiente.
+ * @vue-event validarEmail - Valida el email con la expresión regular correspondiente.
+ * @vue-event validarComentarios - Valida los comentarios con la expresión regular correspondiente.
+ * @vue-event contactar - Si no hay errores se redirige a la página del listado.
+ */
+
     export default {
         data() {
             return{

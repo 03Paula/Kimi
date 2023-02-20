@@ -46,6 +46,36 @@
 
 
 <script lang="ts">
+/**
+ * @file Registro.vue
+ * @author Paula Flor
+ * 
+ * @vue-data {Object} usuarios - Almacena la información del usuario.
+ * @vue-data {String} nombre - Almacena el nombre del usuario.
+ * @vue-data {String} apellidos - Almacena los apellidos del usuario.
+ * @vue-data {String} email - Almacena el email del usuario.
+ * @vue-data {String} nombreusu - Almacena el nombre de usuario.
+ * @vue-data {String} contraseña - Almacena la contraseña del usuario.
+ * @vue-data {String} repContraseña - Almacena contraseña repetida del usuario.
+ * @vue-data {Boolean} errorNombre - Muestra el mensaje de error si es true.
+ * @vue-data {Boolean} errorApellidos - Muestra el mensaje de error si es true.
+ * @vue-data {Boolean} errorEmail - Muestra el mensaje de error si es true.
+ * @vue-data {Boolean} errorNombreusu - Muestra el mensaje de error si es true.
+ * @vue-data {Boolean} errorContrasema - Muestra el mensaje de error si es true.
+ * @vue-data {Boolean} coincide - Muestra el mensaje de error la contraseña no coincide con laa repContraseña.
+ * @vue-data {String} nombreReg - Expresión regular para validar el nombre.
+ * @vue-data {String} emailReg - Expresión regular que valida el email.
+ * @vue-data {String} nombreusuReg - Expresión regular para validar el nombre de usuario.
+ * @vue-data {String} contraseniaReg - Expreción regular para validar la contraseña.
+ * 
+ * @vue-event validarNombre - Valida el nombre con la expresión regular correspondiente.
+ * @vue-event validarApellidos- Valida los apellidos con la expresión regular correspondiente.
+ * @vue-event validarEmail - Valida el email con la expresión regular correspondiente.
+ * @vue-event validarNombreusu - Valida el nombre de usuario con la expresión regular correspondiente.
+ * @vue-event validarContraseña - Valida la contraseña con la expresión regular correspondiente.
+ * @vue-event coincideContraseña - Valida si la contraseña es igual a repContraseña.
+ * @vue-event registrar - Si no hay fallos se almacenan los datos en el localStorage y se redirige al listado.
+ */
     export default {
         data() {
             return {

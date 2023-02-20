@@ -3,7 +3,6 @@
     import BtnInfoUsuario from './BtnInfoUsuario.vue';
     import BtnMedio from './BtnMedio.vue';
     import Volver from './Volver.vue';
-
 </script>
 
 <template>
@@ -109,6 +108,67 @@
 </template>
 
 <script>
+/**
+ * @file Usuario.vue - Componente para la página de usuario.
+ * @uthor Paula Flor
+ * 
+ * @vue-data {Object} usuario - Almacena todos los usuarios.
+ * @vue-data {String} nombre - Almacena el nombre del usuario que se encuentra almacenado en el localStorage.
+ * @vue-data {String} apellidos - Almacena los apellidos del usuario que se encuentran almacenados en el localStorage.
+ * @vue-data {String} email - Almacena el email del usuario que se encuentra almacenado en el localStorage.
+ * @vue-data {String} nombreusu - Almacena el nombre de usuario que se encuentra almacenado en el localStorage. 
+ * @vue-data {Boolean} nuevadireccion - Si es verdadero se muestra el formulario para una nueva dirección.
+ * @vue-data {String} direcciones - Almacena las direcciones del usuario que se encuentran almacenados en el localStorage.
+ * @vue-data {String} tarjetas - Almacena la tarjeta del usuario que se encuentra almacenado en el localStorage.
+ * 
+ * @vue-data {Boolean} mostrarDatos - Muestra la información de los datos del usuario
+ * @vue-data {Boolean} mostrarPedidos - Muestra la información de los pedidos del usuario.
+ * @vue-data {Boolean} mostrarDirecciones - Muestra la información de las direcciones.
+ * @vue-data {Boolean} mostrarTarjetas - Muestra la información relativa a las tarjetas del usuario.
+ * @vue-data {String} calle - Almacena la calle.
+ * @vue-data {String} nombreCalle - Almacena el nombre de la calle.
+ * @vue-data {Int} numero - Almacena el número de la casa.
+ * @vue-data {Int} piso - Almacena el número del piso.
+ * @vue-data {String} provincia - Almacena la provincia.
+ * @vue-data {Int} codigoPostal - Almacena el código postal.
+ * @vue-data {Boolean} errorCalle - Si es verdadero muestra el mensaje de error.
+ * @vue-data {Boolean} errorNombre - Si es verdadero muestra el mensaje de error.
+ * @vue-data {Boolean} errorNumero - Si es verdadero muestra el mensaje de error.
+ * @vue-data {Boolean} errorPiso - Si es verdadero muestra el mensaje de error.
+ * @vue-data {Boolean} errorProvincia- Si es verdadero muestra el mensaje de error.
+ * @vue-data {Boolean} errorPostal - Si es verdadero muestra el mensaje de error.
+ * @vue-data {String} titular - Almacena el titular de la tarjeta.
+ * @vue-data {String} numeroTarjeta - Almacena el número de la tarjeta.
+ * @vue-data {String} vencimiento - Almacena la fecha de vencimiento de la tarjeta.
+ * @vue-data {Boolean} nuevaTarjeta - Muestra el formulario para añadir una nueva tarjeta.
+ * @vue-data {Boolean} errorTitular - Si es true aparece el mensaje de error.
+ * @vue-data {Boolean} errorTarjeta - Si es true aparece el mensaje de error.
+ * @vue-data {Boolean} errorVencimiento - Si es true aparece el mensaje de error.
+ * @vue-data {String} nombresReg - Expresión regular para validar el texto.
+ * @vue-data {String} numeroReg - Expresión regular para validar el numero de calle y piso.
+ * @vue-data {String} postalReg - Expresión regular para validar el código postal.
+ * @vue-data {String} tarjetaReg - Expresión regular para validar el número de la tarjeta.
+ * @vue-data {String} vencimientoReg - Expresión regular para validar la fecha de vencimiento de la tarjeta.
+ * 
+ * @vue-event cerrarSesion - Permite cerrar sesión.
+ * @vue-event misDatos - Permite que solo se muestre la información de los datos del usuario.
+ * @vue-event misPedidos - Permite que solo se muestre la información de los pedidos.
+ * @vue-event misDirecciones - Permite que solo de muestre la información de las direcciones.
+ * @vue-event misTarjetar - Permite que solo se muestren los datos de las tarjetas.
+ * @vue-event calleValida - Valida la expresion regular con el valor de calle.
+ * @vue-event calleValida - Valida la expresion regular con el valor de calle.
+ * @vue-event nombreValida - Valida la expresion regular con el valor del nombre de la calle.
+ * @vue-event numeroValida - Valida la expresion regular con el valor del número.
+ * @vue-event pisoValida - Valida la expresion regular con el valor del piso.
+ * @vue-event provinciaValida - Valida la expresion regular con el valor de la provincia.
+ * @vue-event codigoValido - Valida la expresion regular con el valor del código postal.
+ * 
+ * @vue-event direccion - Si no hay fallos almacena el valor de la direccion en el localStorage.
+ * @vue-event titularValido - Valida la expresión regular con el valor del titular.
+ * @vue-event tarjetaValida - Valida la expresión regular con el valor del número de la tarjeta.
+ * @vue-event vencimientoValido - Valida la expresión regular con el valor del vencimiento.
+ * @vue-event tarjeta - Si no hay errores se almacena la tarjeta en el localStorage.
+ */
     export default {
         data() {
             return {

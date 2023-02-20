@@ -9,6 +9,13 @@
 </template>
 
 <script>
+/**
+ * @file HeaderIndex.vue 
+ * @author Paula Flor
+ * 
+ * @vue-data {Boolean} sesion - Almacena si hay una sesión iniciada o no.
+ * @vue-data {String} usuario - Almacena el nombre de usuario.
+ */
     export default {
         data() {
             return {
