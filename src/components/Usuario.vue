@@ -2,30 +2,29 @@
     import HeaderLogin from './HeaderLogin.vue';
     import BtnInfoUsuario from './BtnInfoUsuario.vue';
     import BtnMedio from './BtnMedio.vue';
-    import Footer from './Footer.vue';
+    import Volver from './Volver.vue';
 
-    const nombre = localStorage.getItem("nombre")
 </script>
 
 <template>
     <HeaderLogin /> 
     <body>
         <div class="botones">
-            <BtnInfoUsuario @click="datos('misDatos')" >
+            <BtnInfoUsuario @click="misDatos()" >
                 <template #info>Mis datos</template>
             </BtnInfoUsuario>
-            <BtnInfoUsuario @click="datos('pedidos')" >
+            <BtnInfoUsuario @click="misPedidos()" >
                 <template #info>Mis pedidos</template>
             </BtnInfoUsuario>
-            <BtnInfoUsuario @click="datos('direcciones')" >
+            <BtnInfoUsuario @click="misDirecciones()" >
                 <template #info>Direcciones</template>
             </BtnInfoUsuario>
-            <BtnInfoUsuario @click="datos('tarjetas')" >
+            <BtnInfoUsuario @click="misTarjetas()" >
                 <template #info>Tarjetas</template>
             </BtnInfoUsuario>
         </div>
 
-        <div id="usuario" class="datosUsuario">
+        <div id="usuario" class="datosUsuario" v-if="mostrarDatos" >
             <div class="informacionUsuario">
                 <img  class="avatar" src="../assets/images/Hachi.jpg" alt="Avatar del usuario" />
                 <div class="lineaVertical"></div>
@@ -42,44 +41,71 @@
                     <template #texto>Cerrar Sesión</template>
                 </BtnMedio>
             </div>
-            <div class="favoritos">
-                <h5>Favoritos:</h5>
-                <div class="productosFav">
-                </div>
-            </div>
+            
         </div>
 
-        <div id="pedidos" class="datosUsuario" style="display:none">
-            <h2>Mis pedidos: </h2>
-            <p>pedido</p>
+        <div id="pedidos" class="datosUsuario" v-if="mostrarPedidos" >
+            <h2 class="texto__usuario">Mis pedidos: </h2>
+            <p class="texto__usuario">pedido</p>
         </div>
 
-        <div id="direcciones" class="datosUsuario" style="display:none" >
-            <h2>Mis direcciones</h2>
-            <p>dirección...</p>
-            <p @click="otradireccion=true">Añadir otra dirección</p>
-            <label for="tipoCalle">Tipo de calle</label>
-            <input id="tipoCalle" name="tipoCalle" placeholder="Avenida, calle..." type="text" required />
-            <label for="nombreCalle">Nombre de la calle</label>
-            <input id="nombreCalle" name="nombreCalle" type="text" required />
-            <label for="numeroCalle">Número</label>
-            <input type="number" id="numeroCalle" name="numeroCalle" required />
-            <label for="piso"></label>
-            <input id="piso" name="piso" type="text" />
-            <label for="provincia">Provincia</label>
-            <input id="provincia" name="provincia" type="text" required />
-            <label for="codigoPostal">Código Postal</label>
-            <input id="codigoPostal" name="codigoPostal" type="text" required />
-            <BtnMedio>
-                <template #texto>Añadir</template>
+        <div id="direcciones" class="datosUsuario"  v-if="mostrarDirecciones" >
+            <h2 class="texto__usuario">Mis direcciones</h2>
+            <p class="texto__usuario">{{ direcciones }}</p>
+            <BtnMedio @click="otraDireccion()">
+                <template #texto>Añadir dirección</template>
             </BtnMedio>
+            <form v-if="nuevadireccion" v-on:submit.prevent="direccion()" class="formulario formularioUsuario">
+                <label for="tipoCalle">Tipo de calle</label>
+                <input id="tipoCalle" name="tipoCalle" placeholder="Avenida, calle..." type="text" v-model="calle" v-on:blur="calleValida" required />
+                <p v-if="errorCalle" class="mensajesError">Escribe una calle válida</p>
+                <label for="nombreCalle">Nombre de la calle</label>
+                <input id="nombreCalle" name="nombreCalle" type="text" v-model="nombreCalle" v-on:blur="nombreValido" required />
+                <p v-if="errorNombre" class="mensajesError">Escribe un nombre válido</p>
+                <label for="numeroCalle">Número</label>
+                <input type="number" id="numeroCalle" name="numeroCalle" v-model="numero" v-on:blur="numeroValido" required />
+                <p v-if="errorNumero" class="mensajesError">No has introducido un número</p>
+                <label for="piso">Piso</label>
+                <input id="piso" name="piso" type="text" v-model="piso" v-on:blur="pisoValido" />
+                <p v-if="errorPiso" class="mensajesError">Escribe el número de piso</p>
+                <label for="provincia">Provincia</label>
+                <input id="provincia" name="provincia" type="text" v-model="provincia" v-on:blur="provinciaValida" required />
+                <p v-if="errorProvincia" class="mensajesError">Escribe una provincia válida</p>
+                <label for="codigoPostal">Código Postal</label>
+                <input id="codigoPostal" name="codigoPostal" type="text" v-model="codigoPostal" v-on:blur="codigoValido" required />
+                <p v-if="errorPostal" class="mensajesError">Escribe un cógigo postal válido (5 dígitos)</p>
+                <BtnMedio class="btn__usuario">
+                    <template #texto>Añadir</template>
+                </BtnMedio>
+            </form>
+            
         </div>
 
-        <div id="tarjetas" class="datosUsuario" style="display:none" >
-            <h2>Mis tarjetas</h2>
+        <div id="tarjetas" class="datosUsuario" v-if="mostrarTarjetas" >
+            <h2 class="texto__usuario" >Mis tarjetas</h2>
+            <p class="texto__usuario" >{{ tarjetas }}</p>
+            <BtnMedio @click="otraTarjeta()">
+                <template #texto>Añadir Tarjeta</template>
+            </BtnMedio>
+            <form v-if="nuevatarjeta" v-on:submit.prevent="tarjeta()" class="formulario formularioTarjeta">
+                <label for="titular">Nombre del titular</label>
+                <input id="titular" name="titular"  type="text" v-model="titular" v-on:blur="titularValido" required />
+                <p v-if="errorTitular" class="mensajesError">Escribe un nombre de titular válido</p>
+                <label for="numeroTarjeta">Número de la tarjeta</label>
+                <input id="numeroTarjeta" name="numeroTarjeta" type="text" v-model="numeroTarjeta" v-on:blur="tarjetaValida" placeholder="XXXX XXXX XXXX XXXX" required />
+                <p v-if="errorTarjeta" class="mensajesError">Escribe un número válido</p>
+                <label for="vencimiento">Fecha de vencimiento</label>
+                <input id="vencimiento" name="vencimiento" type="text" v-model="vencimiento" v-on:blur="vencimientoValido" placeholder="dd/mm" required/>
+                <p v-if="errorVencimiento" class="mensajesError">Escribe una fecha de vencimiento válida (dd/mm)</p>
+                <BtnMedio>
+                    <template #texto>Añadir</template>
+                </BtnMedio>
+            </form>
         </div>
+
+        <Volver />
     </body>
-    <Footer />
+
 </template>
 
 <script>
@@ -90,10 +116,160 @@
                 nombre: localStorage.getItem("usuario"),
                 apellidos: localStorage.getItem("apellidos"),
                 email: localStorage.getItem("email"),
-                nombreusu: localStorage.getItem("nombreusu")
+                nombreusu: localStorage.getItem("nombreusu"),
+                nuevadireccion: false,
+                direcciones: localStorage.getItem("direccion"),
+                tarjetas: localStorage.getItem("tarjetas"),
+
+                mostrarDatos: true,
+                mostrarPedidos:false,
+                mostrarDirecciones:false,
+                mostrarTarjetas:false,
+
+                calle: "",
+                nombreCalle: "",
+                numero: "",
+                piso: "",
+                provincia: "",
+                codigoPostal: "",
+                errorCalle:false,
+                errorNombre:false,
+                errorNumero:false,
+                errorPiso: false,
+                errorProvincia:false,
+                errorPostal:false,
+
+                titular:"",
+                numeroTarjeta:"",
+                vencimiento:"",
+                nuevatarjeta:false,
+                errorTitular: false,
+                errorTarjeta:false,
+                errorVencimiento:false,
+
+                nombresReg:  new RegExp(/^[A-z]{3,}[\s]*[A-z]*[\s]*[A-z]*[\s]*[A-z]*/),
+                numeroReg: new RegExp(/^\d{1,3}$/),
+                postalReg: new RegExp(/^(?:0[1-9]|[1-4]\d|5[0-2])\d{3}$/),
+                tarjetaReg : new RegExp(/^(?:\d{15,16}|\d{4}(?:(?:\s+\d{4}){3}|\s+\d{6}\s\d{5}))$/),
+                vencimientoReg: new RegExp(/^\d{2}\/\d{2}$/)
+
             }
         },
-        
+        methods: {
+            cerrarSesion(){
+                if(window.confirm('¿Estás seguro que quieres cerrar sesión?')){
+                    localStorage.clear();
+                    this.$router.push('/');
+                }
+            },
+
+            misDatos(){
+                this.mostrarDatos = true;
+                this.mostrarDirecciones = false;
+                this.mostrarPedidos = false;
+                this.mostrarTarjetas = false;
+            },
+
+            misPedidos(){
+                this.mostrarPedidos = true;
+                this.mostrarDatos = false;
+                this.mostrarDirecciones = false;
+                this.mostrarTarjetas = false;
+            },
+
+            misDirecciones(){
+                this.mostrarDirecciones = true;
+                this.mostrarDatos = false;
+                this.mostrarPedidos = false;
+                this.mostrarTarjetas = false;
+            },
+
+            misTarjetas(){
+                this.mostrarTarjetas = true;
+                this.mostrarDatos = false;
+                this.mostrarDirecciones = false;
+                this.mostrarPedidos = false;
+            },
+
+            otraDireccion(){
+                if(this.nuevadireccion == false){
+                    this.nuevadireccion = true;
+                }else{
+                    this.nuevadireccion = false;
+                }
+            },
+
+            otraTarjeta(){
+                if(this.nuevatarjeta == false){
+                    this.nuevatarjeta = true;
+                }else{
+                    this.nuevatarjeta = false;
+                }
+            },
+
+            calleValida(){
+                this.errorCalle = !this.nombresReg.test(this.calle);
+            },
+
+            nombreValido(){
+                this.errorNombre = !this.nombresReg.test(this.nombreCalle);
+            },
+
+            numeroValido(){
+                this.errorNumero = !this.numeroReg.test(this.numero);
+            },
+
+            pisoValido(){
+                this.errorPiso = !this.numeroReg.test(this.piso);
+            },
+
+            provinciaValida(){
+                this.errorProvincia = !this.nombresReg.test(this.provincia)
+            },
+
+            codigoValido(){
+                this.errorPostal = !this.postalReg.test(this.codigoPostal);
+            },
+
+            direccion(){
+                if(!this.errorCalle && !this.errorNombre && !this.errorProvincia && !this.errorNumero && !this.errorPiso && !this.errorPostal){
+                    const nuevadir = this.calle + ' ' + this.nombreCalle + ' ' + this.numero + ' ' + this.piso + ' ,' + this.provincia ;
+                    localStorage.setItem("direccion", nuevadir)
+                    alert("nueva dirección añadida");
+                    this.$router.push('usuario');
+                }
+            },
+
+            titularValido(){
+                this.errorTitular = !this.nombresReg.test(this.titular);
+            },
+
+            tarjetaValida(){
+                this.errorTarjeta = !this.tarjetaReg.test(this.numeroTarjeta);
+            },
+
+            vencimientoValido(){
+                this.errorVencimiento = !this.vencimientoReg.test(this.vencimiento);
+            },
+
+            tarjeta(){
+                if(!this.errorTitular && !this.errorTarjeta && !this.errorVencimiento){
+                    let ultimosNumeros ="";
+                    this.numeroTarjeta = this.numeroTarjeta.trim()
+                    for( let i=0 ; i < this.numeroTarjeta.length ; i++){
+                        if(i >= 14){
+                            ultimosNumeros += this.numeroTarjeta[i];
+                            console.log(ultimosNumeros)
+                        }
+                    }
+                    console.log(ultimosNumeros)
+                    const credito = '**** **** **** ' + ultimosNumeros;
+                    localStorage.setItem("tarjetas", credito);
+                    alert("Tarjeta añadida");
+                }
+            }
+
+        }
     }
 
 </script>

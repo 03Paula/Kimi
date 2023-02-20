@@ -17,8 +17,8 @@
             }
         },
         mounted() {
-            if(localStorage.getItem("usuario")){
-                this.usuario = localStorage.getItem("usuario")
+            if(localStorage.getItem("nombreusu")){
+                this.usuario = localStorage.getItem("nombreusu")
                 this.sesion = true
             }
         }
