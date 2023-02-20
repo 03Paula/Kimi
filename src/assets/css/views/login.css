@@ -86,3 +86,8 @@ label.recordar{
     width: 20vh;
     bottom: 0px;
 }
+
+.errorLogin{
+    margin-left: 7vw;
+    font-size: 0.8rem;
+}

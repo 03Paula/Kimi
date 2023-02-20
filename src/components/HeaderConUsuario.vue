@@ -1,12 +1,26 @@
-<script setup>
-    import BotonTema from './BotonTema.vue';
-</script>
 
 
 <template>
     <header class="header__index">
         <RouterLink to="/" style="text-decoration: none; color: inherit;" ><img src="../assets/images/logoTienda.png" alt="logo de la tienda Kimi" class="logo" ></RouterLink>
-        <router-link to="/usuario" style="text-decoration: none; color: inherit;" ><h6 class="usuario" >Usuario</h6></router-link>
-        <BotonTema />
+        <router-link to="/login" style="text-decoration: none; color: inherit;" ><h6 class="sesionListado" v-if="!sesion" >Iniciar sesión</h6></router-link>
+        <router-link to="/usuario" style="text-decoration: none; color: inherit;" ><h6 class="usuario" v-if="sesion" >{{ usuario }}</h6></router-link>
     </header>
 </template>
+
+<script>
+    export default {
+        data() {
+            return {
+                usuario: "",
+                sesion:false
+            }
+        },
+        mounted() {
+            if(localStorage.getItem("usuario")){
+                this.usuario = localStorage.getItem("usuario")
+                this.sesion = true
+            }
+        }
+    }
+</script>

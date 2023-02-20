@@ -1,13 +1,5 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
-import Login from './components/Login.vue'
-
-export default {
-  name: 'App', 
-  components: {
-    Login
-  }
-}
 </script>
 
 <template>

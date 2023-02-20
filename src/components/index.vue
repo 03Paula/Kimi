@@ -8,7 +8,7 @@
     <HeaderIndex />
     <body class="index">
         <h1 class="titulo" >Kimi</h1>
-        <h3>La mejor tienda para comprar mangas</h3>
+        <h3>La mejor tienda para comprar mangas y figuras</h3>
         <RouterLink to="/listado" style="text-decoration: none; color: inherit;" ><BtnGrande /></RouterLink>
     </body>
     <FooterInicio />
