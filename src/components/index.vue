@@ -1,5 +1,5 @@
 <script setup>
-    import HeaderIndex from './headerIndex.vue';
+    import HeaderIndex from './HeaderIndex.vue';
     import FooterInicio from './FooterInicio.vue';
     import BtnGrande from './BtnGrande.vue';
 </script>

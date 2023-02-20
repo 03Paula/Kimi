@@ -1,5 +1,7 @@
 <script setup lang="ts">
     import headerConUsuario from './HeaderConUsuario.vue';
+    import BtnMedio from './BtnMedio.vue';
+    import BtnPequeño from './BtnPequeño.vue';
 </script>
 
 <template>
@@ -7,11 +9,31 @@
     <body>
         <input name="busqueda" id="busqueda" class="barraBusqueda" v-model="busqueda" />
         <button class="btn__busqueda" @click="getOneManga(busqueda)"><img src="../assets/images/busqueda.png" alt="icono de lupa"/></button>
-        <div class="coleccion" v-on="getAllMangas()"> 
+        <div class="botonesListado">
+            <BtnMedio @click="mostrarMangas()" v-on="getAllMangas()">
+                <template #texto>Mangas</template>
+            </BtnMedio>
+            <BtnMedio @click="mostrarFiguras()" v-on="getAllFiguras()">
+                <template #texto>Figuras</template>
+            </BtnMedio>
+        </div>
+        
+        <h2 v-if="manga" class="textoListado">Mangas</h2>
+        <div class="coleccion" v-if="manga"> 
             <div class="producto" v-for="manga in this.mangas" :key="manga.id">
                 <img :src="`${manga.imagen}`" alt="imagen del producto" class="mangas__imagen">
                 <h6 class="manga__nombre">{{ manga.nombre }}</h6>
                 <p class="manga__precio">{{ manga.precio }}</p>
+            </div>
+        </div>
+
+        <h2 v-if="figura" class="textoListado">Figuras</h2>
+        <div class="coleccion" v-if="figura">
+            
+            <div class="producto" v-for="fig in this.figuras" :key="fig.id">
+                <img :src="`${fig.imagen}`" alt="imagen del producto" class="mangas__imagen">
+                <h6 class="manga__nombre">{{ fig.nombre }}</h6>
+                <p class="manga__precio">{{ fig.precio }}</p>
             </div>
         </div>
 
@@ -41,8 +63,11 @@
         data(){
             return{
                 mangas: {},
+                figuras: {},
                 busqueda:"",
                 tiempo:{},
+                manga:true,
+                figura:false
             }
         },
         methods: {
@@ -56,14 +81,34 @@
                 }
             },
 
+            async getAllFiguras(){
+                try{
+                    const response = await fetch("https://kimiback.onrender.com/api/v1/figuras/");
+                    this.figuras = await response.json();
+                    return this.figuras
+                }catch (err){
+                    console.log(err);
+                }
+            },
+
             async getOneManga(busqueda){
                 try{
-                    const response = await fetch(`https://kimiback.onrender.com/api/v1/mangas/${busqueda}`);
-                    this.mangas = await response.json();
+                    const datos = await fetch(`https://kimiback.onrender.com/api/v1/mangas/${busqueda}`);
+                    this.mangas = await datos.json();
 
                 }catch (err){
                     console.log(err)
                 }
+            },
+
+            mostrarMangas(){
+                this.manga = true;
+                this.figura = false;
+            },
+
+            mostrarFiguras(){
+                this.manga = false;
+                this.figura = true
             },
 
             async getTiempo(){

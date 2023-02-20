@@ -31,3 +31,16 @@
 .manga__precio{
     margin-bottom: 20px;
 }
+
+.botonesListado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content:space-evenly ;
+    margin-bottom: 40px;
+   
+}
+
+.textoListado{
+    margin-left: 10vw;
+}
