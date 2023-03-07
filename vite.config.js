@@ -7,6 +7,7 @@ import path from "path"
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  base: "/Kimi/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
