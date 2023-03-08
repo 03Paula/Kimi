@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Index from '../views/index.vue'
+import Index from '@/views/index.vue'
 import Login from '@/components/Login.vue'
 import Registro from '@/components/Registro.vue'
 import Listado from '@/components/Listado.vue'
