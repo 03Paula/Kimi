@@ -1,8 +1,8 @@
 
 <script setup>
-    import HeaderLogin from './HeaderLogin.vue'
-    import BotonMediano from './BtnMedio.vue'
-    import Footer from './Footer.vue'
+    import HeaderLogin from '@/components/HeaderLogin.vue'
+    import BotonMediano from '@/components//BtnMedio.vue'
+    import Footer from '@/components//Footer.vue'
 </script>
 
 <template>
