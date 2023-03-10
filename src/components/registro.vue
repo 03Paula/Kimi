@@ -109,19 +109,6 @@
                 }
             },
 
-            async postUsuario(usuario){
-                try{
-                    const response = await fetch("https://kimiback.onrender.com/api/v1/usuarios", {
-                        method: "POST",
-                        body: JSON.stringify(usuario),
-                        headers: { 'Content-Type': 'application/json; charset=utf-8' }
-                    });
-                    const usuarioCreado = await response.json();
-                    this.usuarios = [...this.usuarios, usuarioCreado];
-                }catch(err){
-                    console.log(err)
-                }
-            },
 
             validarNombre(){
                 this.errorNombre = !this.nombreReg.test(this.nombre);
@@ -161,7 +148,6 @@
                         "tarjetas": ""
                     }
 
-                    this.postUsuario(usuario);
                     this.registrar == true;
                     localStorage.getItem("usuario");
                     localStorage.setItem("usuario", this.nombre);
@@ -170,8 +156,8 @@
                     localStorage.setItem("nombreusu", this.nombreUsu);
                     localStorage.setItem("direcciones", ""),
                     localStorage.setItem("tarjetas", "");
-                    this.$router.push('listado')
-                    alert("Registro con éxito")
+                    this.$router.push('listado');
+                    alert("Registro con éxito");
                 }
             }
             
